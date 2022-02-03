@@ -35,8 +35,8 @@ jobs:
         with:
           files: coverage/lcov.info
 
-      # - name: Trigger render deploy via webhook
-      #   uses: zzzze/webhook-trigger@d83e16935dfe5c1362f730e4326a59519d77ae5b
-      #   with:
-      #     data: '{"event_type":"build"}'
-      #     webhook_url: ${{ secrets.WEBHOOK_URL }}
+      - name: Trigger render deploy via webhook
+        uses: zzzze/webhook-trigger@d83e16935dfe5c1362f730e4326a59519d77ae5b
+        with:
+          data: '{"event_type":"build"}'
+          webhook_url: ${{ secrets.WEBHOOK_URL }}

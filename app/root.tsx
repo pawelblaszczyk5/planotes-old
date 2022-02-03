@@ -9,7 +9,7 @@ export const links: LinksFunction = () => {
 };
 
 export const meta: MetaFunction = () => {
-  return { title: 'New Remix App' };
+  return { title: 'Planotes' };
 };
 
 const Screen = () => {
