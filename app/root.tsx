@@ -12,7 +12,7 @@ export const meta: MetaFunction = () => {
   return { title: 'New Remix App' };
 };
 
-const App = () => {
+const Screen = () => {
   return (
     // Supressing warning because of adding class in ThemeSetter
     <html lang="en" suppressHydrationWarning>
@@ -33,4 +33,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Screen;
