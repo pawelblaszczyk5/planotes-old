@@ -18,7 +18,9 @@
     "build:css": "postcss app/styles/index.css -o app/index.css --env production",
     "build:remix": "remix build",
     "build-storybook": "build-storybook",
-    "postinstall": "remix setup node"
+    "postinstall": "remix setup node",
+    "render:build": "npm ci && npm run build",
+    "render:start": "node server/index.js"
   },
   "dependencies": {
     "@remix-run/express": "^1.1.3",
