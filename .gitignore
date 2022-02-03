@@ -1,0 +1,21 @@
+# Dependencies
+node_modules
+
+# Build artifacts
+/.cache
+/server/build
+/public/build
+/app/index.css
+
+# Test related
+/coverage
+
+# Storybook build artifacts
+/storybook-static
+
+# Environment variables
+.env
+.env.local
+
+# MacOS related
+.DS_Store
