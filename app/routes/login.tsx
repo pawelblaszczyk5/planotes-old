@@ -11,7 +11,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export const action: ActionFunction = async ({ request }) => {
   await auth.authenticate(EMAIL_LINK_STRATEGY, request, {
-    successRedirect: '/login',
+    successRedirect: '/me',
     failureRedirect: '/login',
   });
 };
