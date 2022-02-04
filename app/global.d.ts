@@ -15,6 +15,7 @@ declare global {
       SMTP_HOST: string;
       SMTP_USER: string;
       SMTP_PASSWORD: string;
+      SESSIONS_DIR: string;
     }
   }
 }

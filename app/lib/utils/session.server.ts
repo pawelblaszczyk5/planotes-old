@@ -11,7 +11,7 @@ export const sessionStorage = createFileSessionStorage({
     secure: process.env.NODE_ENV === 'production',
     secrets: [process.env.COOKIE_SECRET],
   },
-  dir: 'sessions',
+  dir: process.env.SESSIONS_DIR,
 });
 
 export const getSession = (request: Request): Promise<Session> =>
