@@ -6,3 +6,15 @@ declare global {
     handleThemeChange: () => void;
   }
 }
+
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      AUTH_SECRET: string;
+      COOKIE_SECRET: string;
+      SMTP_HOST: string;
+      SMTP_USER: string;
+      SMTP_PASSWORD: string;
+    }
+  }
+}
