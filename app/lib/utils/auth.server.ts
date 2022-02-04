@@ -7,7 +7,7 @@ import { EmailLinkStrategy } from 'remix-auth-email-link';
 
 const sendEmail: SendEmailFunction<User> = async ({ emailAddress, magicLink }) => {
   const x = await transporter.sendMail({
-    from: '"Loginer Magic Link" <magic@loginer.ct8.pl>',
+    from: '"Planotes Magic Link" <magic@planotes.ct8.pl>',
     to: emailAddress,
     subject: 'Sign in!',
     text: magicLink,
