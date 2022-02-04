@@ -6,15 +6,19 @@ import { db, sessionStorage, transporter } from '~/lib/utils';
 import { EmailLinkStrategy } from 'remix-auth-email-link';
 
 const sendEmail: SendEmailFunction<User> = async ({ emailAddress, magicLink }) => {
-  const x = await transporter.sendMail({
-    from: '"Planotes Magic Link" <magic@planotes.ct8.pl>',
-    to: emailAddress,
-    subject: 'Sign in!',
-    text: magicLink,
-    html: `<a href="${magicLink}" target="_blank">Sign in</a>`,
-  });
+  try {
+    const x = await transporter.sendMail({
+      from: '"Planotes Magic Link" <magic@planotes.ct8.pl>',
+      to: emailAddress,
+      subject: 'Sign in!',
+      text: magicLink,
+      html: `<a href="${magicLink}" target="_blank">Sign in</a>`,
+    });
 
-  console.log(x);
+    console.log(x);
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 export const auth = new Authenticator<User>(sessionStorage);
