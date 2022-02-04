@@ -12,14 +12,13 @@ declare global {
 
 const transporterConfig: SMTPTransport.Options = {
   host: process.env.SMTP_HOST,
-  port: 25,
-  secure: false,
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASSWORD,
   },
   connectionTimeout: 5000,
-  ignoreTLS: true,
 };
 
 // this is needed because in development we don't want to restart
