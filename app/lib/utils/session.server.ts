@@ -6,7 +6,7 @@ export const sessionStorage = createFileSessionStorage({
   cookie: {
     name: 'SESSIONID',
     httpOnly: true,
-    sameSite: 'strict',
+    sameSite: 'lax',
     path: '/',
     secure: process.env.NODE_ENV === 'production',
     secrets: [process.env.COOKIE_SECRET],
