@@ -13,7 +13,6 @@ declare global {
 const transporterConfig: SMTPTransport.Options = {
   host: process.env.SMTP_HOST,
   port: 587,
-  secure: true,
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASSWORD,
@@ -28,10 +27,6 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   if (!global.__transporter) {
     global.__transporter = createTransport(transporterConfig);
-    global.__transporter.verify((err) => {
-      console.log(err);
-      delete global.__transporter;
-    });
   }
   transporter = global.__transporter;
 }

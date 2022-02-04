@@ -14,7 +14,7 @@
     "dev:remix": "remix watch",
     "dev:express": "env-cmd -f .env.local node server/index.js",
     "dev:css": "postcss app/styles/index.css -o app/index.css --w",
-    "devs:storybook": "start-storybook -p 3001",
+    "dev:storybook": "start-storybook -p 3001",
     "build:css": "postcss app/styles/index.css -o app/index.css --env production",
     "build:remix": "remix build",
     "build-storybook": "build-storybook",
