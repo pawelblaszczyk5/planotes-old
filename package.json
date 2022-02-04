@@ -19,7 +19,7 @@
     "build:remix": "remix build",
     "build-storybook": "build-storybook",
     "postinstall": "remix setup node",
-    "render:build": "npm ci && npm run build",
+    "render:build": "npm ci && npm run build && prisma migrate deploy",
     "render:start": "node server/index.js"
   },
   "dependencies": {
