@@ -5,7 +5,7 @@ import { db, transporter } from '~/lib/utils';
 
 export const loader: LoaderFunction = async () => {
   try {
-    await db.user.count();
+    await db.user.findFirst();
     await transporter.verify();
 
     return json({}, 204);
