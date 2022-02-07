@@ -14,10 +14,10 @@
     "dev:remix": "remix watch",
     "dev:express": "env-cmd -f .env.local node server/index.js",
     "dev:css": "postcss app/styles/index.css -o app/index.css --w",
-    "dev:storybook": "start-storybook -p 3001",
+    "storybook:dev": "start-storybook -p 3001",
+    "storybook:buld": "build-storybook",
     "build:css": "postcss app/styles/index.css -o app/index.css --env production",
     "build:remix": "remix build",
-    "build-storybook": "build-storybook",
     "postinstall": "remix setup node",
     "render:build": "npm ci && npm run build && prisma migrate deploy",
     "render:start": "node server/index.js"
