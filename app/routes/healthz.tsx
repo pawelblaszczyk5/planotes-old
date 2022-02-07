@@ -1,6 +1,15 @@
 import type { LoaderFunction } from 'remix';
 
 import { json } from 'remix';
+import { db, transporter } from '~/lib/utils';
 
-// TODO: implement your custom health checking logic
-export const loader: LoaderFunction = () => json({}, 204);
+export const loader: LoaderFunction = async () => {
+  try {
+    await db.user.count();
+    await transporter.verify();
+
+    return json({}, 204);
+  } catch (e) {
+    return json({}, 500);
+  }
+};
