@@ -16,6 +16,8 @@ declare global {
       SMTP_USER: string;
       SMTP_PASSWORD: string;
       SESSIONS_DIR: string;
+      DKIM_PRIVATE_KEY: string;
+      DKIM_SELECTOR: string;
     }
   }
 }
