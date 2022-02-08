@@ -21,6 +21,7 @@ const Screen = () => {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
+        <ThemeSetter />
       </head>
       <body>
         <ThemeSetter />
