@@ -1,12 +1,11 @@
 import type { LoaderFunction } from 'remix';
 
 import { json } from 'remix';
-import { db, transporter } from '~/lib/utils';
+import { db } from '~/lib/utils';
 
 export const loader: LoaderFunction = async () => {
   try {
     await db.user.findFirst();
-    await transporter.verify();
 
     return json({}, 204);
   } catch (e) {
