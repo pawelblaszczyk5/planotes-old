@@ -1,1 +1,1 @@
-# Planotes
+# [Planotes](https://planotes.xyz)
