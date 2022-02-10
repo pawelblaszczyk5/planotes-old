@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { THEME_LOCAL_STORAGE_KEY } from '~/lib/constants';
-import { Theme } from '~/lib/enums';
 import { useMedia } from '~/lib/hooks/';
 
 export const ThemeSetter = () => {
@@ -9,7 +8,7 @@ export const ThemeSetter = () => {
     window.handleThemeChange = () => {
       const theme = localStorage.getItem('${THEME_LOCAL_STORAGE_KEY}');
       if (
-        localStorage.getItem('${THEME_LOCAL_STORAGE_KEY}') === '${Theme.DARK}' ||
+        localStorage.getItem('${THEME_LOCAL_STORAGE_KEY}') === 'DARK' ||
         (!theme && window.matchMedia('(prefers-color-scheme:dark)').matches)
       ) {
         document.documentElement.classList.add('dark');
@@ -18,7 +17,7 @@ export const ThemeSetter = () => {
       document.documentElement.classList.remove('dark');
     };
     window.setTheme = (newTheme) => {
-      newTheme === ${Theme.SYSTEM}
+      newTheme === 'SYSTEM'
         ? localStorage.removeItem('${THEME_LOCAL_STORAGE_KEY}')
         : localStorage.setItem('${THEME_LOCAL_STORAGE_KEY}', newTheme);
       handleThemeChange();

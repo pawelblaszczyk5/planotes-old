@@ -1,4 +1,4 @@
-import type { Theme } from '~/lib/enums';
+import type { Theme } from '~/lib/types';
 
 declare global {
   interface Window {
