@@ -16,13 +16,13 @@ export const parameters = {
       {
         name: 'Light',
         class: [],
-        color: '#ffffff',
+        color: 'rgb(214 211 209)',
         default: true,
       },
       {
         name: 'Dark',
         class: ['dark'],
-        color: '#000000',
+        color: 'rgb(28 25 23)',
       },
     ],
   },

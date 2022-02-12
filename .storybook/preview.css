@@ -1,10 +1,12 @@
 /* Change to colors from Tailwind theme to match dark mode */
 body,
 .docs-story {
-  background-color: #eaeaea;
+  background-color: rgb(214 211 209);
+  color: rgb(28 25 23);
 }
 
 body.dark,
 body.dark .docs-story {
-  background-color: #323232;
+  color: rgb(214 211 209);
+  background: rgb(28 25 23);
 }
