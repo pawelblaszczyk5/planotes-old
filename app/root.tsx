@@ -23,7 +23,7 @@ const Screen = () => {
         <Links />
         <ThemeSetter />
       </head>
-      <body className="bg-stone-300 text-stone-900 dark:bg-stone-900 dark:text-stone-300">
+      <body className="bg-zinc-50 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-50">
         <ThemeSetter />
         <Outlet />
         <ScrollRestoration />
