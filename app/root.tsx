@@ -2,10 +2,21 @@ import type { LinksFunction, MetaFunction } from 'remix';
 
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from 'remix';
 import styles from '~/index.css';
+import fontsStyles from '~/fonts.css';
 import { ThemeSetter } from '~/lib/components/ThemeSetter';
 
 export const links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: styles }];
+  return [
+    { rel: 'stylesheet', href: styles },
+    { rel: 'stylesheet', href: fontsStyles },
+    {
+      rel: 'preload',
+      as: 'font',
+      href: '/fonts/manrope-latin-400-normal.woff2',
+      type: 'font/woff2',
+      crossOrigin: 'anonymous',
+    },
+  ];
 };
 
 export const meta: MetaFunction = () => {
