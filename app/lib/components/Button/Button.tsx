@@ -7,7 +7,7 @@ import clsx from 'clsx';
 type ButtonColor = 'primary' | 'secondary';
 type ButtonSize = 'small' | 'normal' | 'large';
 
-interface ButtonProps extends HTMLMotionProps<'button'> {
+interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'className'> {
   color?: ButtonColor;
   size?: ButtonSize;
   children: ReactNode;
