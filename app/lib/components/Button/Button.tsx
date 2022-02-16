@@ -22,7 +22,7 @@ export const Button = ({ color = 'primary', size = 'normal', children, ...restPr
         'from-emerald-400 to-cyan-600': color === 'primary',
         'from-rose-400 to-pink-600': color === 'secondary',
         'p-0.5 text-sm font-medium ring-offset-1 focus-visible:ring-2': size === 'small',
-        'p-0.5 font-semibold ring-offset-2 focus-visible:ring-2': size === 'normal',
+        'p-0.5 text-base font-semibold ring-offset-2 focus-visible:ring-2': size === 'normal',
         'p-1 text-2xl font-bold ring-offset-2 focus-visible:ring': size === 'large',
       },
     )}
