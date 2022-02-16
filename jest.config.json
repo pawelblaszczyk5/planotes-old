@@ -1,7 +1,7 @@
 {
   "testEnvironment": "jsdom",
   "setupFilesAfterEnv": ["<rootDir>/jest.setup.ts"],
-  "collectCoverageFrom": ["<rootDir>/app/lib/**/*.ts"],
+  "collectCoverageFrom": ["<rootDir>/app/lib/**/*.{ts,tsx}", "!<rootDir>/app/lib/**/*.stories.{ts,tsx}"],
   "coveragePathIgnorePatterns": ["<rootDir>/app/lib/model/*"],
   "coverageProvider": "v8",
   "moduleNameMapper": {
