@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { Button } from '~/lib/components/Button';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 describe('Button component', () => {
   test('should render button properly', () => {
@@ -26,7 +27,7 @@ describe('Button component', () => {
   });
 
   test('should pass all remaining props into button element', () => {
-    const mockedOnClickHandler = jest.fn();
+    const mockedOnClickHandler = vi.fn();
 
     render(
       <Button onClick={mockedOnClickHandler} type="reset">

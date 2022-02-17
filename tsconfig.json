@@ -10,6 +10,7 @@
     "target": "ES2019",
     "strict": true,
     "baseUrl": ".",
+    "types": ["vitest/globals"],
     "paths": {
       "~/*": ["./app/*"]
     },
