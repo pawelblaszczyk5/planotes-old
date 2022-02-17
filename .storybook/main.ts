@@ -1,4 +1,4 @@
-import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 module.exports = {
   stories: ['../app/lib/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -10,16 +10,12 @@ module.exports = {
     '@storybook/addon-a11y',
   ],
   framework: '@storybook/react',
-  webpackFinal: async (config) => {
-    config.resolve.plugins = [
-      ...(config.resolve.plugins || []),
-      new TsconfigPathsPlugin({
-        extensions: config.resolve.extensions,
-      }),
-    ];
+  viteFinal: async (config) => {
+    config.plugins.push(tsconfigPaths());
+
     return config;
   },
   core: {
-    builder: 'webpack5',
+    builder: 'storybook-builder-vite',
   },
 };
