@@ -7,7 +7,7 @@ import clsx from 'clsx';
 type ButtonColor = 'primary' | 'secondary';
 type ButtonSize = 'small' | 'normal' | 'large';
 
-interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'className'> {
+interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'className' | 'whileTap'> {
   color?: ButtonColor;
   size?: ButtonSize;
   children: ReactNode;
