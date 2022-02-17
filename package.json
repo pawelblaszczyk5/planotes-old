@@ -9,7 +9,7 @@
     "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./app",
     "format": "prettier --write \"./app/**/*.{js,jsx,ts,tsx,html,css,json}\"",
     "test": "jest --passWithNoTests",
-    "serve": "env-cmd node server/build/index.js",
+    "serve": "env-cmd remix-serve build",
     "lint:ci": "eslint --ext .ts,.tsx,.js,.jsx ./app --max-warnings 0",
     "dev:remix": "env-cmd -f .env.local remix dev",
     "dev:css": "postcss app/styles/index.css -o app/index.css --w",
@@ -19,7 +19,7 @@
     "build:remix": "remix build",
     "postinstall": "remix setup node",
     "render:build": "npm ci && npm run build && prisma migrate deploy",
-    "render:start": "node remix-serve build"
+    "render:start": "remix-serve build"
   },
   "dependencies": {
     "@prisma/client": "^3.9.2",
