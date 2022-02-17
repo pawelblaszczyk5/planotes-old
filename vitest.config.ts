@@ -11,7 +11,10 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     coverage: {
-      reporter: ['lcov'],
+      reporter: ['lcov', 'text'],
+      include: ['app/lib/**/*.ts', 'app/lib/**/*.tsx'],
+      exclude: ['app/lib/types/**'],
+      all: true,
     },
   },
 });
