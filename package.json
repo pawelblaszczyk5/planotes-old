@@ -18,7 +18,7 @@
     "storybook:buld": "npm run build:css && build-storybook",
     "build:css": "postcss app/styles/index.css -o app/index.css --env production",
     "build:remix": "remix build",
-    "postinstall": "remix setup node",
+    "postinstall": "remix setup node && node scripts/copyFonts.js",
     "render:build": "npm ci && npm run build && prisma migrate deploy",
     "render:start": "remix-serve build"
   },

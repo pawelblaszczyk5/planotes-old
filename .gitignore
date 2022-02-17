@@ -6,6 +6,7 @@ node_modules
 /build
 /public/build
 /app/index.css
+/app/fonts.css
 
 # Test related
 /coverage
