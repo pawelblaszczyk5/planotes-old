@@ -12,7 +12,7 @@ export default defineConfig({
     environment: 'jsdom',
     coverage: {
       reporter: ['lcov', 'text'],
-      include: ['app/lib/**/*.ts', 'app/lib/**/*.tsx'],
+      include: ['app/lib/**/*.{ts,tsx}'],
       exclude: ['app/lib/types/**'],
       all: true,
     },
