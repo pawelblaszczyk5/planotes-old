@@ -28,7 +28,7 @@ jobs:
         run: npm run lint:ci
 
       - name: Run tests with coverage
-        run: npm test:ci
+        run: npm run test:ci
 
       - name: Upload code coverage to codecov
         uses: codecov/codecov-action@f32b3a3741e1053eb607407145bc9619351dc93b
