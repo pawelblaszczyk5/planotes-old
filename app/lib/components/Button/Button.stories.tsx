@@ -14,14 +14,12 @@ export default {
       control: {
         type: 'text',
       },
-      defaultValue: 'Click me',
     },
-    color: {
-      defaultValue: 'primary',
-    },
-    size: {
-      defaultValue: 'normal',
-    },
+  },
+  args: {
+    children: 'Click me',
+    size: 'normal',
+    color: 'primary',
   },
   parameters: {
     controls: {
@@ -35,10 +33,6 @@ const Template: ComponentStory<typeof Button> = ({ children, ...restProps }: Com
 );
 
 export const Primary = Template.bind({});
-
-Primary.args = {
-  color: 'primary',
-};
 
 export const Secondary = Template.bind({});
 
