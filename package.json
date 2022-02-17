@@ -6,11 +6,11 @@
   "scripts": {
     "build": "npm run build:css && npm run build:remix",
     "dev": "concurrently \"npm:dev:*\"",
-    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./app ./server/index.js",
+    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./app",
     "format": "prettier --write \"./app/**/*.{js,jsx,ts,tsx,html,css,json}\"",
     "test": "jest --passWithNoTests",
     "serve": "env-cmd node server/build/index.js",
-    "lint:ci": "eslint --ext .ts,.tsx,.js,.jsx ./app ./server/index.js --max-warnings 0",
+    "lint:ci": "eslint --ext .ts,.tsx,.js,.jsx ./app --max-warnings 0",
     "dev:remix": "env-cmd -f .env.local remix dev",
     "dev:css": "postcss app/styles/index.css -o app/index.css --w",
     "storybook:dev": "concurrently \"start-storybook -p 3001\" \"npm run dev:css\"",
