@@ -12,9 +12,10 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 const Screen = () => (
-  <h1>
-    Hello App <Outlet />
-  </h1>
+  <main>
+    <h1>Hello App</h1>
+    <Outlet />
+  </main>
 );
 
 export default Screen;

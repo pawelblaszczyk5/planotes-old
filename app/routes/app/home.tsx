@@ -8,6 +8,6 @@ export const loader: LoaderFunction = async ({ request }) => {
   return null;
 };
 
-const Screen = () => <h1>Home</h1>;
+const Screen = () => <h2>Home</h2>;
 
 export default Screen;
