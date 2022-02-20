@@ -43,3 +43,6 @@ const emailLinkStrategy = new EmailLinkStrategy(
 auth.use(emailLinkStrategy);
 
 export const EMAIL_LINK_STRATEGY = emailLinkStrategy.name;
+
+export const isAuthenticated = async (request: Request) =>
+  await auth.isAuthenticated(request, { failureRedirect: '/login' });

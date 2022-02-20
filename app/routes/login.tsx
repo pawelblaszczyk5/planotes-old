@@ -1,18 +1,19 @@
 import type { ActionFunction, LoaderFunction } from 'remix';
 
 import { Form } from 'remix';
-import { auth, EMAIL_LINK_STRATEGY } from '~/lib/utils';
+import { LOGIN_URL } from '~/lib/constants';
+import { auth, EMAIL_LINK_STRATEGY, isAuthenticated } from '~/lib/utils';
 
 export const loader: LoaderFunction = async ({ request }) => {
-  await auth.isAuthenticated(request, { successRedirect: '/me' });
+  await isAuthenticated(request);
 
   return null;
 };
 
 export const action: ActionFunction = async ({ request }) => {
   await auth.authenticate(EMAIL_LINK_STRATEGY, request, {
-    successRedirect: '/login',
-    failureRedirect: '/login',
+    successRedirect: LOGIN_URL,
+    failureRedirect: LOGIN_URL,
   });
 };
 
