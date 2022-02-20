@@ -1,7 +1,6 @@
 import type { LoaderFunction } from 'remix';
 
 import { Outlet } from 'remix';
-
 import { isAuthenticated, isUserOnboarded } from '~/lib/utils';
 
 export const loader: LoaderFunction = async ({ request }) => {
