@@ -6,7 +6,7 @@ import { db, sessionStorage, transporter } from '~/lib/utils';
 import { EmailLinkStrategy } from 'remix-auth-email-link';
 import { APP_URL, LOGIN_URL } from '~/lib/constants';
 
-const sendEmail: SendEmailFunction<User> = async ({ emailAddress, magicLink }) => {
+const sendEmail: SendEmailFunction<User['id']> = async ({ emailAddress, magicLink }) => {
   if (process.env.NODE_ENV === 'production') {
     // TODO: check if email was passed via transporter
     return await transporter.sendMail({
@@ -21,13 +21,13 @@ const sendEmail: SendEmailFunction<User> = async ({ emailAddress, magicLink }) =
   console.log(`Sending magic link to ${emailAddress} - ${magicLink}`);
 };
 
-export const auth = new Authenticator<User>(sessionStorage);
+export const auth = new Authenticator<User['id']>(sessionStorage);
 
 const emailLinkStrategy = new EmailLinkStrategy(
   { sendEmail, secret: process.env.AUTH_SECRET, callbackURL: '/magic' },
 
   async ({ email }: { email: string }) => {
-    const user = await db.user.upsert({
+    const { id } = await db.user.upsert({
       where: {
         email,
       },
@@ -37,7 +37,7 @@ const emailLinkStrategy = new EmailLinkStrategy(
       },
     });
 
-    return user;
+    return id;
   },
 );
 
@@ -50,3 +50,6 @@ export const isAuthenticated = async (request: Request, redirectUrl = LOGIN_URL)
 
 export const isUnAuthenticated = async (request: Request, redirectUrl = APP_URL) =>
   await auth.isAuthenticated(request, { successRedirect: redirectUrl });
+
+export const logout = async (request: Request, redirectUrl = LOGIN_URL) =>
+  await auth.logout(request, { redirectTo: redirectUrl });
