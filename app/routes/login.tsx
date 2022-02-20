@@ -2,10 +2,10 @@ import type { ActionFunction, LoaderFunction } from 'remix';
 
 import { Form } from 'remix';
 import { LOGIN_URL } from '~/lib/constants';
-import { auth, EMAIL_LINK_STRATEGY, isAuthenticated } from '~/lib/utils';
+import { auth, EMAIL_LINK_STRATEGY, isUnAuthenticated } from '~/lib/utils';
 
 export const loader: LoaderFunction = async ({ request }) => {
-  await isAuthenticated(request);
+  await isUnAuthenticated(request);
 
   return null;
 };
