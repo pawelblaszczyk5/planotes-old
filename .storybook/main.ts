@@ -1,4 +1,4 @@
-import tsconfigPaths from 'vite-tsconfig-paths';
+const tsconfigPaths = require('vite-tsconfig-paths');
 
 module.exports = {
   stories: ['../app/lib/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -11,7 +11,7 @@ module.exports = {
   ],
   framework: '@storybook/react',
   viteFinal: async (config) => {
-    config.plugins.push(tsconfigPaths());
+    config.plugins.push(tsconfigPaths.default());
 
     return config;
   },
