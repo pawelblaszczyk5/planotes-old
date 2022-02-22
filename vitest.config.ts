@@ -1,7 +1,6 @@
 /// <reference types="vitest" />
 
-import { defineConfig } from 'vite';
-// TODO: change to vitest/config after https://github.com/vitest-dev/vitest/issues/828
+import { defineConfig } from 'vitest/config';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import react from '@vitejs/plugin-react';
 
