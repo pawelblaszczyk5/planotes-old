@@ -1,7 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import { Button } from '~/lib/components/Button';
-import userEvent from '@testing-library/user-event';
-import { vi } from 'vitest';
+import { vi, describe, expect, test, render, screen, userEvent } from '~/__tests__/utils';
 
 describe('Button component', () => {
   test('should render button properly', () => {
