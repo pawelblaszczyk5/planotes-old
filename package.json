@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@fontsource/manrope": "^4.5.4",
+    "@previewjs/plugin-react": "^1.2.0",
     "@remix-run/dev": "^1.2.2",
     "@storybook/addon-a11y": "^6.4.19",
     "@storybook/addon-actions": "^6.4.19",
