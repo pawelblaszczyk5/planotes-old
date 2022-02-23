@@ -23,4 +23,6 @@ const regex = /fonts\/((\w|-|\.)+)/gm;
   );
 
   await fs.writeFile(path.join('app', 'fonts.css'), data);
+
+  console.log('Successfully copied fonts to specific directory');
 })();

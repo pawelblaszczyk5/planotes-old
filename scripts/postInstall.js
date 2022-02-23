@@ -1,0 +1,2 @@
+require('./copyFonts');
+require('./patchJestDom');

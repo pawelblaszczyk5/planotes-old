@@ -17,7 +17,7 @@
     "ci:lint": "eslint --ext .ts,.tsx,.js,.jsx ./app --max-warnings 0",
     "ci:tsc": "tsc",
     "ci:test": "vitest run --coverage",
-    "postinstall": "remix setup node && node scripts/copyFonts.js",
+    "postinstall": "remix setup node && node scripts/postInstall.js",
     "render:build": "npm ci && npm run build && prisma migrate deploy",
     "render:start": "remix-serve build"
   },
