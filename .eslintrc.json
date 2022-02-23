@@ -15,7 +15,6 @@
     "plugin:jest-dom/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript",
-    "plugin:storybook/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/strict",
     "plugin:prettier/recommended"
