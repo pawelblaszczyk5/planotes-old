@@ -1,2 +1,1 @@
 require('./copyFonts');
-require('./patchJestDom');
