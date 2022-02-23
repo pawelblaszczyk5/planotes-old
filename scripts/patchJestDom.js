@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+// TODO: remove after https://github.com/testing-library/jest-dom/issues/427
 const fs = require('fs/promises');
 const path = require('path');
 
