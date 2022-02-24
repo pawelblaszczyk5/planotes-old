@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import { useEffect, useState, useCallback } from 'react';
 
-import '~/index.css';
+import '~/styles/index.css';
 import '~/fonts.css';
 import './Wrapper.postcss';
 
@@ -22,10 +22,6 @@ css.appendChild(
 
 export const Wrapper = ({ children }: { children: ReactNode }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    document.body.classList.add('bg-zinc-50', 'text-zinc-800', 'dark:bg-zinc-800', 'dark:text-zinc-50');
-  }, []);
 
   useEffect(() => {
     document.head.appendChild(css);
