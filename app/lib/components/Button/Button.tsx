@@ -3,7 +3,6 @@ import type { HTMLMotionProps } from 'framer-motion';
 
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
-import { setupPreviews } from '@previewjs/plugin-react/setup';
 
 type ButtonColor = 'primary' | 'secondary';
 type ButtonSize = 'small' | 'normal' | 'large';
@@ -43,29 +42,3 @@ export const Button = ({ color = 'primary', size = 'normal', children, ...restPr
     </span>
   </motion.button>
 );
-
-setupPreviews(Button, {
-  Primary: {
-    color: 'primary',
-    children: 'Click me',
-  },
-  Secondary: {
-    color: 'secondary',
-    children: 'Click me',
-  },
-  Small: {
-    color: 'primary',
-    children: 'Click me',
-    size: 'small',
-  },
-  Normal: {
-    color: 'primary',
-    children: 'Click me',
-    size: 'normal',
-  },
-  Large: {
-    color: 'primary',
-    children: 'Click me',
-    size: 'large',
-  },
-});

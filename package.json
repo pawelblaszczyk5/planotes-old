@@ -37,7 +37,6 @@
   },
   "devDependencies": {
     "@fontsource/manrope": "^4.5.4",
-    "@previewjs/plugin-react": "^1.2.0",
     "@remix-run/dev": "^1.2.2",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
