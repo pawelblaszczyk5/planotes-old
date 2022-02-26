@@ -33,11 +33,6 @@ jobs:
       - name: Run typechecking
         run: npm run ci:tsc
 
-      - name: Upload code coverage to codecov
-        uses: codecov/codecov-action@f32b3a3741e1053eb607407145bc9619351dc93b
-        with:
-          files: coverage/lcov.info
-
       - name: Trigger render deploy via webhook
         uses: zzzze/webhook-trigger@d83e16935dfe5c1362f730e4326a59519d77ae5b
         with:
