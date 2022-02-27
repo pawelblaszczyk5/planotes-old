@@ -27,9 +27,6 @@ jobs:
       - name: Lint code
         run: npm run ci:lint
 
-      - name: Run tests with coverage
-        run: npm run ci:test
-
       - name: Run typechecking
         run: npm run ci:tsc
 

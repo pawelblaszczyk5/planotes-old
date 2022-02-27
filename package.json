@@ -8,7 +8,6 @@
     "dev": "concurrently \"npm:dev:*\"",
     "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./app",
     "format": "prettier --write \"./app/**/*.{js,jsx,ts,tsx,html,css,json}\"",
-    "test": "vitest --ui --open",
     "serve": "env-cmd remix-serve build",
     "dev:remix": "env-cmd -f .env.local remix dev",
     "dev:css": "postcss app/styles/index.css -o app/index.css --w",
@@ -16,7 +15,6 @@
     "build:remix": "remix build",
     "ci:lint": "eslint --ext .ts,.tsx,.js,.jsx ./app --max-warnings 0",
     "ci:tsc": "tsc",
-    "ci:test": "vitest run",
     "postinstall": "remix setup node && node scripts/postInstall.js",
     "render:build": "npm ci && npm run build && prisma migrate deploy",
     "render:start": "remix-serve build"
