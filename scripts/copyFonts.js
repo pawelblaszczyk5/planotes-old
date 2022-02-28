@@ -14,7 +14,7 @@ const regex = /fonts\/((\w|-|\.)+)/gm;
     .reduce((prev, curr) => prev + curr.toString(), '')
     .replaceAll('./files', '/fonts');
 
-  const fontMatches = [...data.matchAll(regex)];
+  const fontMatches = Array.from(data.matchAll(regex));
 
   await Promise.all(
     fontMatches.map(([, fontFile]) =>
