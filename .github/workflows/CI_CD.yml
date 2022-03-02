@@ -27,8 +27,11 @@ jobs:
       - name: Lint code
         run: npm run ci:lint
 
-      - name: Run typechecking
+      - name: Typecheck
         run: npm run ci:tsc
+
+      - name: Tests
+        run: npm run ci:test
 
       - name: Trigger render deploy via webhook
         uses: zzzze/webhook-trigger@d83e16935dfe5c1362f730e4326a59519d77ae5b

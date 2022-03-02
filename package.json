@@ -18,6 +18,7 @@
     "build:storybook": "build-storybook",
     "ci:lint": "eslint --ext .ts,.tsx,.js,.jsx ./app --max-warnings 0",
     "ci:tsc": "tsc",
+    "ci:test": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run build:storybook --quiet && http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && npm test\"",
     "postinstall": "remix setup node && node scripts/postInstall.js",
     "render:build": "npm ci && npm run build && prisma migrate deploy",
     "render:start": "remix-serve build"
@@ -80,6 +81,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-storybook": "^0.5.7",
     "eslint-plugin-testing-library": "^5.0.5",
+    "http-server": "^14.1.0",
     "jest": "^27.5.1",
     "postcss": "^8.4.7",
     "postcss-cli": "^9.1.0",
@@ -87,6 +89,7 @@
     "prettier-plugin-tailwindcss": "^0.1.8",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "^4.6.2",
+    "wait-on": "^6.0.1",
     "webpack": "^5.69.1"
   },
   "engines": {
