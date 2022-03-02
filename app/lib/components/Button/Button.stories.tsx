@@ -1,6 +1,8 @@
 import type { ComponentMeta, ComponentStoryObj } from '@storybook/react';
 
 import { Button } from '~/lib/components/Button';
+import { within, userEvent } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 
 type Story = ComponentStoryObj<typeof Button>;
 
@@ -56,5 +58,21 @@ export const Normal: Story = {
 export const Large: Story = {
   args: {
     size: 'large',
+  },
+};
+
+export const Interacitve: Story = {
+  args: {
+    size: 'small',
+    color: 'secondary',
+    children: 'Download',
+  },
+  play: async ({ args: { onClick }, canvasElement }) => {
+    const screen = within(canvasElement);
+    const button = screen.getByRole('button', { name: 'Download' });
+
+    await expect(button).toBeInTheDocument();
+    await userEvent.click(button);
+    await expect(onClick).toHaveBeenCalled();
   },
 };
