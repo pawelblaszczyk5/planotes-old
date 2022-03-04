@@ -1,9 +1,9 @@
 import type { LoaderFunction } from 'remix';
 
-import { NavLink, Outlet } from 'remix';
-import clsx from 'clsx';
+import { Outlet } from 'remix';
 
 import { getUser, isUserOnboarded } from '~/lib/utils';
+import { Nav } from '~/features/app/components/Nav';
 
 export const loader: LoaderFunction = async ({ request }) => {
   const user = await getUser(request);
@@ -15,11 +15,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 const Screen = () => (
   <div className="p-4">
-    <nav>
-      <NavLink className={({ isActive }) => clsx(isActive && 'text-blue-200')} to="">
-        Test
-      </NavLink>
-    </nav>
+    <Nav />
     <main>
       <Outlet />
     </main>
