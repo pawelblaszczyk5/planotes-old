@@ -10,7 +10,12 @@ const handleRequest = (
   remixContext: EntryContext,
 ) => {
   // eslint-disable-next-line testing-library/render-result-naming-convention -- fake positive with Testing Library
-  const markup = renderToString(<RemixServer context={remixContext} url={request.url} />);
+  const markup = renderToString(
+    <RemixServer
+      context={remixContext}
+      url={request.url}
+    />,
+  );
 
   responseHeaders.set('Content-Type', 'text/html');
 

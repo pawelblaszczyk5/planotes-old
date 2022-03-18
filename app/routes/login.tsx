@@ -21,7 +21,12 @@ const Screen = () => {
   return (
     <Form method="post">
       <label>
-        E-mail <input type="email" name="email" required />
+        E-mail{' '}
+        <input
+          type="email"
+          name="email"
+          required
+        />
       </label>
       <button>Send magic link to my email</button>
     </Form>
