@@ -1,7 +1,6 @@
 import type { LoaderFunction } from 'remix';
 
 import { Outlet } from 'remix';
-
 import { getUser, isUserOnboarded } from '~/lib/utils';
 import { Nav } from '~/features/app/components/Nav';
 
