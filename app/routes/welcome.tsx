@@ -1,11 +1,9 @@
 import type { LoaderFunction } from 'remix';
 
-import { isUserOnboarded, getUser } from '~/lib/utils';
+import { getUser } from '~/lib/utils';
 
 export const loader: LoaderFunction = async ({ request }) => {
-  const user = await getUser(request);
-
-  isUserOnboarded(user, false);
+  await getUser(request, false);
 
   return null;
 };

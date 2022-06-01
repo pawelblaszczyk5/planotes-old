@@ -48,7 +48,7 @@ export const EMAIL_LINK_STRATEGY = emailLinkStrategy.name;
 export const isAuthenticated = async (request: Request, redirectUrl = LOGIN_URL) =>
   await auth.isAuthenticated(request, { failureRedirect: redirectUrl });
 
-export const isUnAuthenticated = async (request: Request, redirectUrl = APP_URL) =>
+export const isNotAuthenticated = async (request: Request, redirectUrl = APP_URL) =>
   await auth.isAuthenticated(request, { successRedirect: redirectUrl });
 
 export const logout = async (request: Request, redirectUrl = LOGIN_URL) =>
