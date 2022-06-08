@@ -1,4 +1,4 @@
-import type { LoaderFunction } from 'remix';
+import type { LoaderFunction } from '@remix-run/node';
 
 import { APP_URL, LOGIN_URL } from '~/lib/constants';
 import { auth, EMAIL_LINK_STRATEGY } from '~/lib/utils';

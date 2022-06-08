@@ -1,6 +1,5 @@
-import type { ActionFunction, LoaderFunction } from 'remix';
-
-import { Form } from 'remix';
+import type { ActionFunction, LoaderFunction } from '@remix-run/node';
+import { Form } from '@remix-run/react';
 import { LOGIN_URL } from '~/lib/constants';
 import { auth, EMAIL_LINK_STRATEGY, isNotAuthenticated } from '~/lib/utils';
 

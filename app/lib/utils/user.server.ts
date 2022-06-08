@@ -1,6 +1,6 @@
 import type { User } from '@prisma/client';
 
-import { redirect } from 'remix';
+import { redirect } from '@remix-run/node';
 import { APP_URL, WELCOME_URL } from '~/lib/constants';
 import { db, isAuthenticated } from '~/lib/utils';
 import { logout } from '~/lib/utils/auth.server';

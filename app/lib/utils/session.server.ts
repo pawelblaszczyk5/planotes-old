@@ -1,6 +1,5 @@
-import type { Session } from 'remix';
-
-import { createFileSessionStorage } from 'remix';
+import type { Session } from '@remix-run/node';
+import { createFileSessionStorage } from '@remix-run/node';
 
 export const sessionStorage = createFileSessionStorage({
   cookie: {

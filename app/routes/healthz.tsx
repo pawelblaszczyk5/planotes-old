@@ -1,6 +1,5 @@
-import type { LoaderFunction } from 'remix';
-
-import { json } from 'remix';
+import type { LoaderFunction } from '@remix-run/node';
+import { json } from '@remix-run/node';
 import { db } from '~/lib/utils';
 
 export const loader: LoaderFunction = async () => {
