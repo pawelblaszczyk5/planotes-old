@@ -20,12 +20,11 @@
     "ci:lint": "eslint --ext .ts,.tsx,.js,.jsx ./app --max-warnings 0",
     "ci:tsc": "tsc",
     "ci:test": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run build:storybook --quiet && http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && npm test\"",
-    "postinstall": "remix setup node && node scripts/postInstall.js",
+    "postinstall": "remix setup node",
     "render:build": "npm ci && npm run build && prisma migrate deploy",
     "render:start": "remix-serve build"
   },
   "dependencies": {
-    "@fontsource/manrope": "^4.5.10",
     "@prisma/client": "^3.15.0",
     "@remix-run/react": "^1.5.1",
     "@remix-run/serve": "^1.5.1",
