@@ -16,17 +16,15 @@ const handleRequest = async (
   remixContext: EntryContext,
 ) => {
   const instance = createInstance();
-
-  const lng = await i18next.getLocale(request);
-  const ns = i18next.getRouteNamespaces(remixContext);
+  const namespaces = i18next.getRouteNamespaces(remixContext);
 
   await instance
     .use(initReactI18next)
     .use(Backend)
     .init({
       ...i18nConfig,
-      lng,
-      ns,
+      lng: 'en',
+      ns: namespaces,
       backend: {
         loadPath: resolve('./public/locales/{{lng}}/{{ns}}.json'),
       },
