@@ -1,4 +1,7 @@
 import type { Theme } from '~/lib/types';
+import type shared from 'public/locales/en/shared.json';
+
+import 'react-i18next';
 
 declare global {
   interface Window {
@@ -19,5 +22,14 @@ declare global {
       DKIM_PRIVATE_KEY: string;
       DKIM_SELECTOR: string;
     }
+  }
+}
+
+declare module 'react-i18next' {
+  interface CustomTypeOptions {
+    defaultNS: 'shared';
+    resources: {
+      shared: typeof shared;
+    };
   }
 }

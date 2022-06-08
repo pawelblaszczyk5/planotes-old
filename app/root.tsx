@@ -1,7 +1,15 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/node';
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
+import type { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/node';
+
+import { json } from '@remix-run/node';
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
 import { ThemeSetter } from '~/lib/components/ThemeSetter';
 import styles from '~/index.css';
+import { i18next } from '~/lib/utils';
+import { useTranslation } from 'react-i18next';
+
+interface LoaderData {
+  locale: string;
+}
 
 export const links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: styles }];
@@ -11,11 +19,26 @@ export const meta: MetaFunction = () => {
   return { title: 'Planotes' };
 };
 
+export const handle = {
+  i18n: 'shared',
+};
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const locale = await i18next.getLocale(request);
+
+  return json<LoaderData>({ locale });
+};
+
 const Screen = () => {
+  const { locale } = useLoaderData<LoaderData>();
+
+  const { i18n } = useTranslation();
+
   return (
     // Supressing warning because of adding class in ThemeSetter
     <html
-      lang="en"
+      lang={locale}
+      dir={i18n.dir()}
       suppressHydrationWarning
     >
       <head>

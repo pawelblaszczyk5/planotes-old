@@ -1,3 +1,9 @@
-const Screen = () => <h1>Hello Planotes</h1>;
+import { useTranslation } from 'react-i18next';
+
+const Screen = () => {
+  const { t } = useTranslation();
+
+  return <h1>{t('greeting')}</h1>;
+};
 
 export default Screen;
