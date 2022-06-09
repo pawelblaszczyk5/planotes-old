@@ -12,7 +12,7 @@ const sendMagicLink: SendEmailFunction<User['id']> = async ({ emailAddress, magi
       receiver: emailAddress,
       subject: 'Sign in!',
       plainTextVersion: magicLink,
-      html: '<a href="${magicLink}" target="_blank">Sign in</a>',
+      html: `<a href="${magicLink}" target="_blank">Sign in</a>`,
     });
   }
 
