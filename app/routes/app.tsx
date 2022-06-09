@@ -1,4 +1,5 @@
 import type { LoaderFunction } from '@remix-run/node';
+
 import { Outlet } from '@remix-run/react';
 import { getUser } from '~/lib/utils';
 import { Nav } from '~/features/app/components/Nav';

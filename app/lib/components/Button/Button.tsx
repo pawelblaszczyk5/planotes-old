@@ -17,7 +17,7 @@ export const Button = ({ color = 'primary', size = 'normal', children, ...restPr
   <motion.button
     whileTap={{ scale: 0.95 }}
     className={clsx(
-      'group inline-grid place-items-center overflow-hidden rounded-lg bg-gradient-to-br font-medium  text-zinc-800 ring-violet-600/50 ring-offset-zinc-50 hover:text-zinc-50 focus:outline-none dark:text-zinc-50	dark:ring-violet-400/75 dark:ring-offset-zinc-800',
+      'group inline-grid place-items-center overflow-hidden rounded-lg bg-gradient-to-br font-medium text-zinc-800 ring-violet-600/50 ring-offset-zinc-50 hover:text-zinc-50 focus:outline-none dark:text-zinc-50	dark:ring-violet-400/75 dark:ring-offset-zinc-800',
       {
         'from-emerald-400 to-cyan-600': color === 'primary',
         'from-rose-400 to-pink-600': color === 'secondary',
