@@ -1,12 +1,11 @@
 import type { User } from '@prisma/client';
-import type { SendEmailFunction } from 'remix-auth-email-link';
+import type { EmailLinkStrategyVerifyParams, SendEmailFunction } from 'remix-auth-email-link';
 
 import { Authenticator } from 'remix-auth';
 import { db, sendEmail, sessionStorage } from '~/lib/utils';
 import { EmailLinkStrategy } from 'remix-auth-email-link';
-import { APP_URL, LOGIN_URL } from '~/lib/constants';
 
-const sendMagicLink: SendEmailFunction<User['id']> = async ({ emailAddress, magicLink }) => {
+const sendMagicLink: SendEmailFunction<User> = async ({ emailAddress, magicLink }) => {
   if (process.env.NODE_ENV === 'production') {
     return sendEmail({
       senderName: 'Planotes Magic Link',
@@ -20,35 +19,29 @@ const sendMagicLink: SendEmailFunction<User['id']> = async ({ emailAddress, magi
   console.log(`Sending magic link to ${emailAddress} - ${magicLink}`);
 };
 
-export const auth = new Authenticator<User['id']>(sessionStorage);
+const verifyUser = async ({ email }: EmailLinkStrategyVerifyParams) => {
+  return await db.user.upsert({
+    where: {
+      email,
+    },
+    update: {},
+    create: {
+      email,
+    },
+  });
+};
+
+const auth = new Authenticator<User>(sessionStorage);
 
 const emailLinkStrategy = new EmailLinkStrategy(
   { sendEmail: sendMagicLink, secret: process.env.AUTH_SECRET, callbackURL: '/magic' },
-
-  async ({ email }: { email: string }) => {
-    const { id } = await db.user.upsert({
-      where: {
-        email,
-      },
-      update: {},
-      create: {
-        email,
-      },
-    });
-
-    return id;
-  },
+  verifyUser,
 );
 
 auth.use(emailLinkStrategy);
 
 export const EMAIL_LINK_STRATEGY = emailLinkStrategy.name;
 
-export const isAuthenticated = async (request: Request, redirectUrl = LOGIN_URL) =>
-  await auth.isAuthenticated(request, { failureRedirect: redirectUrl });
-
-export const isNotAuthenticated = async (request: Request, redirectUrl = APP_URL) =>
-  await auth.isAuthenticated(request, { successRedirect: redirectUrl });
-
-export const logout = async (request: Request, redirectUrl = LOGIN_URL) =>
-  await auth.logout(request, { redirectTo: redirectUrl });
+export const logout = auth.logout.bind(auth);
+export const isAuthenticated = auth.isAuthenticated.bind(auth);
+export const authenticate = auth.authenticate.bind(auth);

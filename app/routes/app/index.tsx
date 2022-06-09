@@ -1,13 +1,6 @@
 import type { LoaderFunction } from '@remix-run/node';
 
-import { getUser } from '~/lib/utils';
+import { redirect } from '@remix-run/node';
+import { APP_URL } from '~/lib/constants';
 
-export const loader: LoaderFunction = async ({ request }) => {
-  await getUser(request, true);
-
-  return null;
-};
-
-const Screen = () => <h2>Dashboard</h2>;
-
-export default Screen;
+export const loader: LoaderFunction = () => redirect(APP_URL, 301);

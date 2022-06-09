@@ -5,8 +5,7 @@ export const Nav = () => (
   <nav className="flex gap-2">
     <NavLink
       className={({ isActive }) => clsx(isActive && 'text-blue-200')}
-      to=""
-      end
+      to="home"
     >
       Dashboard
     </NavLink>

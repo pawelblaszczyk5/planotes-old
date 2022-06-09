@@ -1,49 +1,16 @@
 import type { User } from '@prisma/client';
 
 import { redirect } from '@remix-run/node';
-import { APP_URL, WELCOME_URL } from '~/lib/constants';
-import { db, isAuthenticated } from '~/lib/utils';
-import { logout } from '~/lib/utils/auth.server';
+import { WELCOME_URL } from '~/lib/constants';
 
 type OnboardedUser = {
   [T in keyof User]: NonNullable<User[T]>;
 };
 
-type NotOnboardedUser = {
-  [T in keyof User]: null extends User[T] ? null : User[T];
-};
+const isOnboarded = (user: User) => Boolean(user.name);
 
-const isUserOnboarded = (user: User): user is OnboardedUser => {
-  const isUserOnboarded = Boolean(user.name);
+export const isUserOnboarded = (user: User): user is OnboardedUser => isOnboarded(user);
 
-  return isUserOnboarded;
-};
-
-const isUserNotOnboarded = (user: User): user is NotOnboardedUser => {
-  const isUserOnboarded = Boolean(user.name);
-
-  return !isUserOnboarded;
-};
-
-export const getUser = async <T extends boolean>(
-  request: Request,
-  shouldBeOnboarded: T,
-  // @ts-expect-error TS has strange problem with async function typing here
-): T extends true ? Promise<OnboardedUser> : Promise<NotOnboardedUser> => {
-  const id = await isAuthenticated(request);
-  const user = await db.user.findFirst({ where: { id } });
-
-  if (!user) {
-    throw await logout(request);
-  }
-
-  if (shouldBeOnboarded && isUserOnboarded(user)) {
-    return user;
-  }
-
-  if (!shouldBeOnboarded && isUserNotOnboarded(user)) {
-    return user;
-  }
-
-  throw redirect(shouldBeOnboarded ? WELCOME_URL : APP_URL);
-};
+export function redirectIfNotOnboarded(user: User): asserts user is OnboardedUser {
+  if (!isUserOnboarded(user)) throw redirect(WELCOME_URL);
+}

@@ -1,9 +1,13 @@
 import type { LoaderFunction } from '@remix-run/node';
 
-import { getUser } from '~/lib/utils';
+import { LOGIN_URL } from '~/lib/constants';
+import { isAuthenticated } from '~/lib/utils';
+import { redirectIfNotOnboarded } from '~/lib/utils/user.server';
 
 export const loader: LoaderFunction = async ({ request }) => {
-  await getUser(request, true);
+  const user = await isAuthenticated(request, { failureRedirect: LOGIN_URL });
+
+  redirectIfNotOnboarded(user);
 
   return null;
 };
