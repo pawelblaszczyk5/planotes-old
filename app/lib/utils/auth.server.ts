@@ -2,19 +2,18 @@ import type { User } from '@prisma/client';
 import type { SendEmailFunction } from 'remix-auth-email-link';
 
 import { Authenticator } from 'remix-auth';
-import { db, sessionStorage, transporter } from '~/lib/utils';
+import { db, sendEmail, sessionStorage } from '~/lib/utils';
 import { EmailLinkStrategy } from 'remix-auth-email-link';
 import { APP_URL, LOGIN_URL } from '~/lib/constants';
 
-const sendEmail: SendEmailFunction<User['id']> = async ({ emailAddress, magicLink }) => {
+const sendMagicLink: SendEmailFunction<User['id']> = async ({ emailAddress, magicLink }) => {
   if (process.env.NODE_ENV === 'production') {
-    // TODO: check if email was passed via transporter
-    return await transporter.sendMail({
-      from: `"Planotes Magic Link" <${process.env.SMTP_USER}>`,
-      to: emailAddress,
+    return sendEmail({
+      senderName: 'Planotes Magic Link',
+      receiver: emailAddress,
       subject: 'Sign in!',
-      text: magicLink,
-      html: `<a href="${magicLink}" target="_blank">Sign in</a>`,
+      plainTextVersion: magicLink,
+      html: '<a href="${magicLink}" target="_blank">Sign in</a>',
     });
   }
 
@@ -24,7 +23,7 @@ const sendEmail: SendEmailFunction<User['id']> = async ({ emailAddress, magicLin
 export const auth = new Authenticator<User['id']>(sessionStorage);
 
 const emailLinkStrategy = new EmailLinkStrategy(
-  { sendEmail, secret: process.env.AUTH_SECRET, callbackURL: '/magic' },
+  { sendEmail: sendMagicLink, secret: process.env.AUTH_SECRET, callbackURL: '/magic' },
 
   async ({ email }: { email: string }) => {
     const { id } = await db.user.upsert({

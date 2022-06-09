@@ -3,6 +3,7 @@ import type SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 import { createTransport } from 'nodemailer';
 
+const EMAIL_ERROR = 'Unable to send email';
 let transporter: Transporter;
 
 declare global {
@@ -36,4 +37,30 @@ if (process.env.NODE_ENV === 'production') {
   transporter = global.__transporter;
 }
 
-export { transporter };
+interface SendEmailOptions {
+  html: string;
+  receiver: string;
+  plainTextVersion: string;
+  senderName: string;
+  subject: string;
+}
+
+interface SendEmailResult {
+  accepted: Array<string>;
+}
+
+export const sendEmail = async ({ html, receiver, plainTextVersion, senderName, subject }: SendEmailOptions) => {
+  try {
+    const { accepted }: SendEmailResult = await transporter.sendMail({
+      from: `"${senderName}" <${process.env.SMTP_USER}>`,
+      to: receiver,
+      subject,
+      text: plainTextVersion,
+      html,
+    });
+
+    if (!accepted.includes(senderName)) throw new Error(EMAIL_ERROR);
+  } catch (e) {
+    throw new Error(EMAIL_ERROR);
+  }
+};
