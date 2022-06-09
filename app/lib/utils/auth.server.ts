@@ -5,7 +5,7 @@ import { Authenticator } from 'remix-auth';
 import { db, sendEmail, sessionStorage } from '~/lib/utils';
 import { EmailLinkStrategy } from 'remix-auth-email-link';
 
-const sendMagicLink: SendEmailFunction<User> = async ({ emailAddress, magicLink }) => {
+const sendMagicLink: SendEmailFunction<User['id']> = async ({ emailAddress, magicLink }) => {
   if (process.env.NODE_ENV === 'production') {
     return sendEmail({
       senderName: 'Planotes Magic Link',
@@ -19,19 +19,20 @@ const sendMagicLink: SendEmailFunction<User> = async ({ emailAddress, magicLink 
   console.log(`Sending magic link to ${emailAddress} - ${magicLink}`);
 };
 
-const verifyUser = async ({ email }: EmailLinkStrategyVerifyParams) => {
-  return await db.user.upsert({
-    where: {
-      email,
-    },
-    update: {},
-    create: {
-      email,
-    },
-  });
-};
+const verifyUser = async ({ email }: EmailLinkStrategyVerifyParams) =>
+  (
+    await db.user.upsert({
+      where: {
+        email,
+      },
+      update: {},
+      create: {
+        email,
+      },
+    })
+  ).id;
 
-const auth = new Authenticator<User>(sessionStorage);
+const auth = new Authenticator<User['id']>(sessionStorage);
 
 const emailLinkStrategy = new EmailLinkStrategy(
   { sendEmail: sendMagicLink, secret: process.env.AUTH_SECRET, callbackURL: '/magic' },
