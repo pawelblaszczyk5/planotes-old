@@ -50,6 +50,7 @@ interface SendEmailResult {
 }
 
 export const sendEmail = async ({ html, receiver, plainTextVersion, senderName, subject }: SendEmailOptions) => {
+  console.log(transporter);
   try {
     const { accepted }: SendEmailResult = await transporter.sendMail({
       from: `"${senderName}" <${process.env.SMTP_USER}>`,
