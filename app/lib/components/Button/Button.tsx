@@ -23,7 +23,7 @@ export const Button = ({ color = 'primary', size = 'normal', children, ...restPr
         'from-rose-400 to-pink-600': color === 'secondary',
         'p-0.5 text-sm ring-offset-1 focus-visible:ring-2': size === 'small',
         'p-0.5 text-base ring-offset-2 focus-visible:ring-2': size === 'normal',
-        'p-1 text-2xl ring-offset-2 focus-visible:ring': size === 'large',
+        'p-1 text-xl ring-offset-2 focus-visible:ring': size === 'large',
       },
     )}
     {...restProps}
@@ -33,8 +33,8 @@ export const Button = ({ color = 'primary', size = 'normal', children, ...restPr
         'rounded-md bg-zinc-50 transition duration-75 ease-in group-hover:bg-opacity-0 dark:bg-zinc-800',
         {
           'rounded-md px-3 py-1.5': size === 'small',
-          'rounded-md px-5 py-2.5': size === 'normal',
-          'rounded px-6 py-3': size === 'large',
+          'rounded-md px-5 py-1.5': size === 'normal',
+          'rounded px-7 py-2.5': size === 'large',
         },
       )}
     >
