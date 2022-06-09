@@ -9,8 +9,6 @@ type OnboardedUser = {
 
 const isOnboarded = (user: User) => Boolean(user.name);
 
-export const isUserOnboarded = (user: User): user is OnboardedUser => isOnboarded(user);
-
 export function redirectIfNotOnboarded(user: User): asserts user is OnboardedUser {
-  if (!isUserOnboarded(user)) throw redirect(ONBOARDING_URL);
+  if (!isOnboarded(user)) throw redirect(ONBOARDING_URL);
 }
