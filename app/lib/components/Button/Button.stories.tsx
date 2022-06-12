@@ -61,7 +61,7 @@ export const Large: Story = {
   },
 };
 
-export const Interacitve: Story = {
+export const InteractionTest: Story = {
   args: {
     size: 'small',
     color: 'secondary',
