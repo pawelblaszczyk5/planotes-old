@@ -1,43 +1,30 @@
-import clsx from 'clsx';
-import { NavLink } from '@remix-run/react';
+import { useMedia } from '~/lib/hooks';
 
-export const Nav = () => (
-  <nav className="flex gap-2">
-    <NavLink
-      className={({ isActive }) => clsx(isActive && 'text-blue-200')}
-      to="home"
-    >
-      Dashboard
-    </NavLink>
-    <NavLink
-      className={({ isActive }) => clsx(isActive && 'text-blue-200')}
-      to="planner"
-    >
-      Planner
-    </NavLink>
-    <NavLink
-      className={({ isActive }) => clsx(isActive && 'text-blue-200')}
-      to="notes"
-    >
-      Notes
-    </NavLink>
-    <NavLink
-      className={({ isActive }) => clsx(isActive && 'text-blue-200')}
-      to="goals"
-    >
-      Goals
-    </NavLink>
-    <NavLink
-      className={({ isActive }) => clsx(isActive && 'text-blue-200')}
-      to="tasks"
-    >
-      Tasks
-    </NavLink>
-    <NavLink
-      className={({ isActive }) => clsx(isActive && 'text-blue-200')}
-      to="rewards"
-    >
-      Rewards
-    </NavLink>
-  </nav>
-);
+const MobileNav = () => {
+  return (
+    <nav className="lg:hidden">
+      <p>Mobile nav</p>
+    </nav>
+  );
+};
+
+const DesktopNav = () => {
+  return (
+    <nav className="hidden lg:block">
+      <p>Desktop nav</p>
+    </nav>
+  );
+};
+
+export const Nav = () => {
+  const isDesktop = useMedia('(min-width: 1024px)');
+  const shouldShowDesktopNav = typeof isDesktop !== 'boolean' || isDesktop;
+  const shouldShowMobileNav = typeof isDesktop !== 'boolean' || !isDesktop;
+
+  return (
+    <>
+      {shouldShowDesktopNav && <DesktopNav />}
+      {shouldShowMobileNav && <MobileNav />}
+    </>
+  );
+};

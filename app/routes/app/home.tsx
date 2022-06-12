@@ -2,7 +2,6 @@ import type { LoaderFunction } from '@remix-run/node';
 
 import { Outlet } from '@remix-run/react';
 import { LOGIN_URL, ONBOARDING_URL } from '~/lib/constants';
-
 import { isAuthenticated, getUser, redirectNotOnboardedUser } from '~/lib/utils';
 
 export const loader: LoaderFunction = async ({ request }) => {
